@@ -22,18 +22,18 @@
 http://releases.ubuntu.com/18.04/ubuntu-18.04.1-desktop-amd64.iso
 Имя пользователя, пароль - по желанию.
 - После установки обновляем систему
-`apt update`
-`apt upgrade`
+- `apt update`
+- `apt upgrade`
 - устанавливаем IDE для удобства, в моём примере это PyCharm, но может быть любой.
 Подключаем к проекту репозиторий https://github.com/Veter9/office_devops
 Ветка master всего одна, pull сразу в мастер. 
 В дальнейшем IDE используется для правки кода всего проекта
 
-## установка VirtualBox на компьютер разработчика для запуска GitLab сервиса
-`wget https://download.virtualbox.org/virtualbox/5.2.18/virtualbox-5.2_5.2.18-124319~Ubuntu~bionic_amd64.deb`
-`dpkg -i virtualbox-5.2_5.2.18-124319~Ubuntu~bionic_amd64.deb`
+## Установка VirtualBox на компьютер разработчика Server1 для запуска GitLab сервиса
+- `wget https://download.virtualbox.org/virtualbox/5.2.18/virtualbox-5.2_5.2.18-124319~Ubuntu~bionic_amd64.deb`
+- `dpkg -i virtualbox-5.2_5.2.18-124319~Ubuntu~bionic_amd64.deb`
 
-## Установка GitLab сервиса на Server2 192.168.1.214
+## Установка GitLab сервиса 
 - создаем новую виртуальную машину средствами графического интерфейса VirtualBox 
 4096 RAM, 4 cores, 30GB HDD DVI, network=bridge 
 - устанавливаем Ubuntu 18.04 server x64
@@ -41,16 +41,26 @@ http://releases.ubuntu.com/18.04/ubuntu-18.04.1-desktop-amd64.iso
 Установка по-умолчанию, пользователь user, пароль 1, имя сервера gitlab
 Раздел не шифровать.
 - после установки сервера необходимо сделать обновление сервера 
-`apt update`
-`apt upgrade`
-`apt install ssh`
-`sudo apt-get install -y curl openssh-server ca-certificates`
-`curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash`
-`sudo EXTERNAL_URL="http://gitlab.example.com" apt-get install gitlab-ce` 
+- `apt update`
+- `apt upgrade`
+- `apt install ssh`
+- `sudo apt-get install -y curl openssh-server ca-certificates`
+- `curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash`
+- `sudo EXTERNAL_URL="http://gitlab.example.com" apt-get install gitlab-ce` 
 где gitlab.example.com - домен внутри локальной сети компании
 После установки необходимо зайти на веб-страницу GitLab 192.168.1.214 
-При первом старте необходимо ввести gfhjkm (Ww1228Tt).
+При первом старте необходимо ввести пароль рута (Ww1228Tt).
 После этого можно залогиниться по http://192.168.1.214 и ввести логин root вкупе с созданным паролем Ww1228Tt
+- Создаем проект с именем "NMS_3.4". Access private.
+
+## Установка виртуальной машины для запуска виртуалок на сервере Server3
+- создаем новую виртуальную машину средствами графического интерфейса VirtualBox
+4096 RAM, 4 cores, 30GB HDD DVI, network=bridge 
+- устанавливаем Ubuntu 18.04 server x64
+Образ брать отсюда http://releases.ubuntu.com/18.04/ubuntu-18.04.1-live-server-amd64.iso
+Установка по-умолчанию, пользователь user, пароль 1, имя сервера vargantbox
+Раздел не шифровать.
+- 
 
 
 
