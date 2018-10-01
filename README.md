@@ -81,3 +81,12 @@ http://releases.ubuntu.com/18.04/ubuntu-18.04.1-desktop-amd64.iso
 - https://docs.gitlab.com/runner/register/index.html
 - `sudo gitlab-runner register`
 - После установки его видно в списках раннеров
+## Подключение GitLab сервиса к машине разработчика
+- Генерируем ключи SSH для подключения на GitLab сервере
+- `ssh-keygen`
+- Далее копируем созданный клюяч на машину разработчика
+- `ssh-copy-id user@192.168.1.41`
+- После успешного добавления можно проверить введя команду
+`ssh user@192.168.1.41`
+- Должно запустить без пароля
+##
