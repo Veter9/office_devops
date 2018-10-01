@@ -63,14 +63,21 @@ http://releases.ubuntu.com/18.04/ubuntu-18.04.1-desktop-amd64.iso
 
 # Настройка сервисов 
 ## 1. Настройка GitLab сервиса
-- Подключаем IDE разработчика к репозиторию http://gitlab.example.com/root/nms-3.4.git
+- Подключаем IDE разработчика к репозиторию CI системы http://gitlab.example.com/root/nms-3.4.git
 - Создаем первый файл с имнем .gitlab-ci.yml
 В этом файле будет раположен наш пайплайн.
+- Добавляем файл в git реестр и делаем commit+push
+- Конечно же у нас грохнулся пайплайн. Нам необходим раннер. Settings - CI/CD - Runners
 - Устанавливаем раннер. Я выбрал SSH раннер. Делаем по инструкции
-
-- 
+- https://docs.gitlab.com/runner/install/linux-repository.html 
 - подключаемся к сервису по ssh 
-- `ssh user@192.168.1.214` и вводим пароль "1"
--
-
-
+- `ssh user@192.168.1.214` , соглашаемся с ключом и вводим пароль "1"
+- переходим в консоль админа `sudo su`
+- `curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash`
+- `sudo apt-get install gitlab-runner`
+- `apt-cache madison gitlab-runner`
+- `sudo apt-get install gitlab-runner=10.0.0`
+- Далее необходимо зарегистрировать раннер
+- https://docs.gitlab.com/runner/register/index.html
+- `sudo gitlab-runner register`
+- После установки его видно в списках раннеров
